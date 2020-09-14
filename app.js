@@ -1,10 +1,11 @@
 const express = require('express')
 const socket = require('socket.io')
-const https = require('https')
+const server = require('https')
 const fs = require('fs')
 const app = express()
-const io = require('socket.io')
 const router = require(__dirname + '/router/main.js')
+const io = socket(server)
+const session = require('express-session')
 
 const option = {
     key: fs.readFileSync('C:/Users/오지훈/Desktop/Jihoon/ssl/localhost_private.key'),
@@ -13,24 +14,34 @@ const option = {
 
 const bodyParser = require('body-parser')
 
+/* set view engine */
+app.set('views', __dirname + '/views')
+app.set('view engine', 'ejs')
+app.engine('html', require('ejs').renderFile)
+
 app.use(express.static(__dirname + '/static'))
-app.use(bodyParser.urlencoded({extended:false}))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(session({
+    secret: '@#@$MYSIGN#@$#$',
+    resave: false,
+    saveUninitialized: true
+}))
+
 app.use('/', router)
 
-/*app.post('/', (req, res) => {
-    res.send('router')
-    fs.readFile(__dirname + '/static/index.html', (err,data) => {
-        if(err) {
-            console.log('error')
-        }
-        else {
-            res.writeHead(200, {'Content-type': 'text/html'})
-            res.write(data)
-            res.end()
-        }
+/*
+io.sockets.on('connection', (socket) => {
+    socket.on('newUser', (name) => {
+        console.log(`${name}님이 접속하였습니다.`)
+
+        socket.name = name
+
+        io.sockets.emit('update', {type: 'connect', name: 'SERVER', message: `${name}님이 접속하였습니다.`})
     })
 })*/
 
-https.createServer(option, app).listen(3000, (req, res) => {
+server.createServer(option, app).listen(3000, (req, res) => {
     console.log('server start')
 })
