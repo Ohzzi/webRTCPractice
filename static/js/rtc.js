@@ -8,8 +8,6 @@ let localVideo = document.getElementById('localVideo'),
     remoteStream,
     pc
 
-const socket = io.connect()
-
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false
@@ -17,7 +15,7 @@ navigator.mediaDevices.getUserMedia({
     .then(gotStream)
     .catch((error) => {
         console.log(error)
-        alrert(e.name())
+        alert(error)
     })
 
 function gotStream(stream) {

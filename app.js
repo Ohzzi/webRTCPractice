@@ -1,10 +1,9 @@
 const express = require('express')
-const socket = require('socket.io')
+const io = require('socket.io')
 const server = require('https')
 const fs = require('fs')
 const app = express()
 const router = require(__dirname + '/router/main.js')
-const io = socket(server)
 const session = require('express-session')
 
 const option = {
