@@ -1,6 +1,5 @@
 const express = require('express')
-const io = require('socket.io')
-const server = require('https')
+const https = require('https')
 const fs = require('fs')
 const app = express()
 const router = require(__dirname + '/router/main.js')
@@ -13,12 +12,20 @@ const option = {
 
 const bodyParser = require('body-parser')
 
+const server = https.createServer(option, app)
+server.listen(3000, (req, res) => {
+    console.log('server start')
+})
+
+const io = require('socket.io').listen(server)
+
 /* set view engine */
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 app.engine('html', require('ejs').renderFile)
-
-app.use(express.static(__dirname + '/static'))
+app.use('/css', express.static('./static/css'))
+app.use('/js', express.static('./static/js'))
+//app.use(express.static(__dirname + '/static'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,17 +37,10 @@ app.use(session({
 
 app.use('/', router)
 
-/*
 io.sockets.on('connection', (socket) => {
-    socket.on('newUser', (name) => {
-        console.log(`${name}님이 접속하였습니다.`)
-
-        socket.name = name
-
-        io.sockets.emit('update', {type: 'connect', name: 'SERVER', message: `${name}님이 접속하였습니다.`})
+    console.log('유저 접속 됨')
+    
+    socket.on('disconnect', () => {
+        console.log('접속 종료')
     })
-})*/
-
-server.createServer(option, app).listen(3000, (req, res) => {
-    console.log('server start')
 })

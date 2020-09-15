@@ -8,6 +8,12 @@ let localVideo = document.getElementById('localVideo'),
     remoteStream,
     pc
 
+let socket = io()
+
+socket.on('connect', () => {
+    socket.emit('send', 'connected')
+})
+
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false
