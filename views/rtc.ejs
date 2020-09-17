@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebRTC practice</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <div>RTC</div>
     <video id="localVideo" autoplay width="480px"></video>
     <video id="remoteVideo" width="480px" autoplay></video>
-    <div class="chat">
-
+    <div>
+        <button id="startButton">Start</button>
+        <button id="callButton">Call</button>
+        <button id="hangupButton">Hang Up</button>
     </div>
-    
+    <div class="chat">
+        Chatting
+    </div>
+    <form action="post">
+        <input type="text" class="message">
+        <input type="button" class="send" value="send">
+    </form>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/rtc.js"></script>
 </body>
+
 </html>
