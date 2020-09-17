@@ -60,7 +60,7 @@ io.sockets.on('connection', (socket) => {
         socket.broadcast.emit('message', message)
     });
 
-    /*socket.on('create or join',room=>{
+    socket.on('create or join',room=>{
         let clientsInRoom = io.sockets.adapter.rooms[room]
         let numClients = clientsInRoom ? Object.keys(clientsInRoom.sockets).length : 0
         log('Room ' + room + ' now has ' + numClients + ' client(s)')
@@ -81,5 +81,5 @@ io.sockets.on('connection', (socket) => {
         }else {
             socket.emit('full',room);
         }
-    })*/
+    })
 })

@@ -15,7 +15,7 @@ socket.on('connect', () => {
 
 navigator.mediaDevices.getUserMedia({
     video: true,
-    audio: false
+    audio: true
 })
     .then(gotStream)
     .catch((error) => {

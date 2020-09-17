@@ -7,7 +7,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
 
 router.get('/', (req, res) => {
     res.render('index', {
-        title: "My Home Page",
+        title: "WebRTC Practice",
         length: 5
     })
 })
