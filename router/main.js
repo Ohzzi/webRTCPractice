@@ -12,20 +12,6 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/about', (req, res) => {
-    fs.readFile('views/about.ejs', (err, data) => {
-        if (err) {
-            console.log('error')
-            res.send('error')
-        }
-        else {
-            res.writeHead(200, { 'Content-type': 'text/html' })
-            res.write(data)
-            res.end()
-        }
-    })
-})
-
 router.get('/rtc', (req, res) => {
     fs.readFile('views/rtc.ejs', (err, data) => {
         if (err) {
