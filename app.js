@@ -23,9 +23,9 @@ const io = require('socket.io').listen(server)
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 app.engine('html', require('ejs').renderFile)
-app.use('/css', express.static('./static/css'))
-app.use('/js', express.static('./static/js'))
-//app.use(express.static(__dirname + '/static'))
+//app.use('/css', express.static('./public/css'))
+//app.use('/js', express.static('./public/js'))
+app.use(express.static(__dirname + '/public'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -43,7 +43,7 @@ io.sockets.on('connection', (socket) => {
 
     function log() {
         let array = ['Message from Server: ']
-        array.push.apply(array,arguments)
+        array.push.apply(array, arguments)
         socket.emit('log',array)
     }
 
@@ -78,7 +78,7 @@ io.sockets.on('connection', (socket) => {
             socket.join(room)
             socket.emit('joined',room,socket.id)
             io.sockets.in(room).emit('ready')
-        }else {
+        } else {
             socket.emit('full',room);
         }
     })
