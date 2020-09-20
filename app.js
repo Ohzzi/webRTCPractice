@@ -22,8 +22,10 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 app.engine('html', require('ejs').renderFile)
 
+/* Set public directory to static */
 app.use(express.static('public'))
 
+/* Use body-parser */
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
