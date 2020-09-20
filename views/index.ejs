@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>Hello!</title>
+    <script src="/js/index.js" defer></script>
 </head>
 <body>
-    <button type="button" onclick="location.href='./rtc'">Start</button>
+    <h1>Welcome to my webRTC site!</h1>
+    <div class="info">
+        <form action="" name="login" method="POST">
+            ID: <input type="text" name="id"><br>
+            Password: <input type="text" name="password"><br>
+            <input type="submit" value="login">
+        </form>
+        <input type="submit" value="sign up" onclick="location.href='./signup'">
+    </div>
+
+    <!--<button type="button" onclick="location.href='./rtc'">Start</button>-->
 </body>
 </html>
