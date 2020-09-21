@@ -5,8 +5,9 @@ const constraints = {
 }
 const myVideo = document.createElement('video')
 
-playLocalVideo()
-
+function startButtonPressed() {
+    playLocalVideo()
+}
 /* async */
 async function playLocalVideo() {
     try {
