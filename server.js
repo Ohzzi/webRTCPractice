@@ -4,6 +4,7 @@ const fs = require('fs')
 const router = require(__dirname + '/router/index.js')
 const app = express()
 const bodyParser = require('body-parser')
+const passport = require('passport')
 
 const option = {
     key: fs.readFileSync('ssl/localhost_private.key'),
@@ -31,3 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 /* Use router module */
 app.use('/', router)
+
+/* Login passport */
+app.use(passport.initialize())
+app.use(passport.session())
