@@ -1,18 +1,15 @@
 const connection = require('./connection')
 
-module.exports = async function selectAll(name) {
-    let conn;
+module.exports = async (conn, body) => {
     try {
-      conn = await connection.getConnection()
-      const rows = await conn.query("SELECT * from USER where name = '" + name + "';")
       if (rows[0]) {
-        console.log(rows)
+        console.log('중복')
+        return false
       } else {
-        console.log('none')
+        console.log('중복 아님')
+        return true
       }
     } catch (err) {
       throw err
-    } finally {
-      if (conn) conn.release() //release to pool
     }
 }
