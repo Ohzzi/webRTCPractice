@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const select = require('../../models/signup/select')
 const insert = require('../../models/signup/insert')
 
 router.get('/', (req, res) => {
