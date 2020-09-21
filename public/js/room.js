@@ -5,17 +5,6 @@ const constraints = {
 }
 const myVideo = document.createElement('video')
 
-/* promise
-navigator.mediaDevices.getUserMedia(constraints)
-    .then((stream) => {
-        console.log('Got MediaStream', stream)
-        addVideoStream(myVideo, stream)
-    })
-    .catch((error) => {
-        console.log('Error: ', error)
-    })
-*/
-
 playLocalVideo()
 
 /* async */
