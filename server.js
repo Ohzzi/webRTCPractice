@@ -3,7 +3,6 @@ const https = require('https');
 const fs = require('fs');
 const router = require(__dirname + '/router/index.js');
 const app = express();
-const bodyParser = require('body-parser');
 const passport = require('passport');
 
 const option = {
@@ -27,8 +26,8 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static('public'));
 
 /* Use body-parser */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 /* Use router module */
 app.use('/', router);
@@ -46,4 +45,7 @@ const configuration = {
 
 io.sockets.on('connection', (socket) => {
     console.log('connected');
-})
+    socket.on('join-room', (roomID, userID) => {
+        console.log(roomID, userID);
+    })
+});
