@@ -1,4 +1,4 @@
-const mariaDB = require('mariadb')
+const mariaDB = require('mariadb');
 
 const pool = mariaDB.createPool({
     host: 'localhost',
@@ -6,6 +6,6 @@ const pool = mariaDB.createPool({
     user: 'root',
     password: 'dhwlgns97@',
     database: 'webrtc'
-})
+});
 
-module.exports = pool
+module.exports = pool;
