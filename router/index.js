@@ -6,7 +6,7 @@ const naver = require('./naver/login');
 
 router.get('/', (req, res) => {
     res.render('index');
-})
+});
 
 router.use('/signup', signUp);
 router.use('/room', room);

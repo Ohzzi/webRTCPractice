@@ -8,7 +8,7 @@ const passport = require('passport');
 
 const option = {
     key: fs.readFileSync('ssl/localhost_private.key'),
-    cert: fs.readFileSync('ssl/localhost.crt');
+    cert: fs.readFileSync('ssl/localhost.crt')
 }
 
 const server = https.createServer(option, app);
@@ -36,3 +36,14 @@ app.use('/', router);
 /* Login passport */
 app.use(passport.initialize());
 app.use(passport.session());
+
+/* Peer Connection */
+const configuration = {
+    'iceServers': [
+        { 'urls': 'stun:stun.l.google.com:19302' }
+    ]
+};
+
+io.sockets.on('connection', (socket) => {
+    console.log('connected');
+})
