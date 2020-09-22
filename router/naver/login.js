@@ -17,7 +17,7 @@ router.get('/naver/callback', passport.authenticate('naver', {
 passport.use(new NaverStrategy({
     clientID: config.clientID,
     clientSecret: config.clientSecret,
-    callbackURL: config.callbackURL;
+    callbackURL: config.callbackURL
 }, function (accessToken, refreshToken, profile, done) {
     process.nextTick(() => {
         const user = {

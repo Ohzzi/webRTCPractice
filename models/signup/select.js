@@ -12,4 +12,4 @@ module.exports = async (conn, body) => {
     } catch (err) {
       throw err;
     }
-};
+}
