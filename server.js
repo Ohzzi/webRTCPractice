@@ -45,7 +45,12 @@ const configuration = {
 
 io.sockets.on('connection', (socket) => {
     console.log('connected');
+})
+
+/*io.sockets.on('connection', (socket) => {
+    console.log('connected');
     socket.on('join-room', (roomID, userID) => {
-        console.log(roomID, userID);
-    })
-});
+        socket.join(roomID);
+        socket.to(roomID).broadcast.emit('user-connected', userID);
+    });
+});*/
