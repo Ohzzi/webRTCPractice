@@ -11,7 +11,7 @@ router.get('/create', (req, res) => {
 });
 
 router.get('/:room', (req, res) => {
-    res.render('room', { roomId: req.params.room });
+    res.render('room', { roomID: req.params.room, userID: `${uuidV4()}` });
 });
 
 module.exports = router;
