@@ -39,7 +39,7 @@ function call() {
 const socket = io();
 socket.emit('create or join', ROOM_ID, USER_ID);
 
-socket.on('created', room => {
+socket.on('created', () => {
     const myVideo = document.createElement('video');
     navigator.mediaDevices.getUserMedia(constraints)
         .then(stream => {

@@ -3,7 +3,6 @@ const https = require('https');
 const fs = require('fs');
 const router = require(__dirname + '/router/index.js');
 const app = express();
-const passport = require('passport');
 const port = process.env.PORT || 3000;
 
 const option = {
@@ -34,8 +33,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', router);
 
 /* Login passport */
-app.use(passport.initialize());
-app.use(passport.session());
+/* app.use(passport.initialize());
+app.use(passport.session()); */
 
 io.on('connection', socket => {
     console.log('user connected');

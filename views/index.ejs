@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/js/index.js"></script>
     <title>Hello!</title>
 </head>
 <body>
     <h1>Welcome to my webRTC site!</h1>
     <div class="info">
-        <form action="" name="login" method="POST">
-            ID: <input type="text" name="id"><br>
-            Password: <input type="text" name="password"><br>
-            <input type="submit" value="login">
-        </form>
-        <input type="submit" value="naver login" onclick="location.href='/login/naver'">
+        room number: <input type="text" id="roomNumber"><br>
+        <Button id="joinButton">join</Button>
     </div>
-    <input type="submit" value="sign up" onclick="location.href='./signup'">
+    <input type="submit" value="create room" onclick="location.href='./room/create'">
     <!--<button type="button" onclick="location.href='./rtc'">Start</button>-->
 </body>
 </html>
